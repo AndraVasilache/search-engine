@@ -5,12 +5,38 @@ import sys
 import tkinter as tk
 
 root =tk.Tk()
-mystring =tk.StringVar(root)
-e1 = tk.Entry(root,textvariable = mystring,width=100,fg="blue",bd=3,selectbackground='violet').pack()
-button1 = tk.Button(root, 
-                text='Submit', 
-                fg='White', 
-                bg= 'dark green',height = 1, width = 10, command = root.destroy).pack()
+root.title("Open Source Search Engine")
+root.geometry("700x500")
+mystring = tk.StringVar(root)
+
+description = tk.Label(root, text = " ")
+description.pack()
+
+description = tk.Label(root, text = "Welcome to Open Source Search Engine, an app made entirely in")
+description.pack()
+
+description = tk.Label(root, text = "Python. Find the documents from any directory that match your search!")
+description.pack()
+
+description = tk.Label(root, text = "Your search needs to look something like:")
+description.pack()
+
+description = tk.Label(root, text = "word1 && (word2 || (word3 && !(word4)))")
+description.pack()
+
+description = tk.Label(root, text = "Happy searcing!")
+description.pack()
+
+description = tk.Label(root, text = " ")
+description.pack()
+
+entry = tk.Entry(root, textvariable = mystring, width = 100, fg = "blue", bd = 3, selectbackground = 'violet').pack()
+button = tk.Button(root, text = 'Submit', fg = 'White', bg = 'dark blue', 
+height = 1, width = 10, command = root.destroy).pack()
+
+text_width = 20
+text = tk.Text(root, width=text_width, height=1, bg='yellow')
+text.pack()
 
 root.mainloop()
 
@@ -72,5 +98,15 @@ for document in list_of_files:
 
 for i in result:
     print(files[i])
+
+master = tk.Tk()
+
+listbox = tk.Listbox(master)
+listbox.pack()
+
+for i in result:
+    listbox.insert(tk.END, files[i])
+
+master.mainloop()
 
 
