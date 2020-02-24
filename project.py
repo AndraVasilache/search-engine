@@ -4,39 +4,34 @@ import re
 import sys
 import tkinter as tk
 
+
+##start of the first GUI window
 root =tk.Tk()
 root.title("Open Source Search Engine")
 root.geometry("700x500")
+root.config(bg = "light blue")
+
+description = tk.Label(root, bg = "light blue", text = " ")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = "Welcome to Open Source Search Engine, an app made entirely in")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = "Python. Find the documents from any directory that match your search!")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = "Your search needs to look something like:")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = "word1 && (word2 || (word3 && !(word4)))")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = "Happy searching!")
+description.pack()
+description = tk.Label(root, bg = "light blue", text = " ")
+description.pack()
+
+#input variable
 mystring = tk.StringVar(root)
 
-description = tk.Label(root, text = " ")
-description.pack()
-
-description = tk.Label(root, text = "Welcome to Open Source Search Engine, an app made entirely in")
-description.pack()
-
-description = tk.Label(root, text = "Python. Find the documents from any directory that match your search!")
-description.pack()
-
-description = tk.Label(root, text = "Your search needs to look something like:")
-description.pack()
-
-description = tk.Label(root, text = "word1 && (word2 || (word3 && !(word4)))")
-description.pack()
-
-description = tk.Label(root, text = "Happy searcing!")
-description.pack()
-
-description = tk.Label(root, text = " ")
-description.pack()
-
-entry = tk.Entry(root, textvariable = mystring, width = 100, fg = "blue", bd = 3, selectbackground = 'violet').pack()
-button = tk.Button(root, text = 'Submit', fg = 'White', bg = 'dark blue', 
-height = 1, width = 10, command = root.destroy).pack()
-
-text_width = 20
-text = tk.Text(root, width=text_width, height=1, bg='yellow')
-text.pack()
+#interactables
+entry = tk.Entry(root, textvariable = mystring, width = 50, fg = "blue", bd = 3, selectbackground = 'violet').pack()
+button = tk.Button(root, text = 'Submit', fg = 'White', bg = '#49A', height = 1, width = 10, command = root.destroy).pack()
 
 root.mainloop()
 
@@ -69,8 +64,15 @@ for filename in glob.glob('*.txt'):
     #add list_of_words to the total list of files
     list_of_files.append(list_of_words)
 
-#############33query = sys.stdin.readline() #string input
-query = mystring.get()
+try:
+    query = mystring.get()
+except:
+    print("An error has occured. Something must not be right with the imput")
+    sys.exit()
+
+if (not query):
+    print("Your imput is empty!")
+    sys.exit()
 keywords = re.sub(r'[^\w\s]', '', query)
 keywords = keywords.split()
 
@@ -95,18 +97,23 @@ for document in list_of_files:
             result.append(list_of_files.index(document))
     except:
         print("An error has occured")
+        sys.exit()
 
+root =tk.Tk()
+root.title("Open Source Search Engine")
+root.config(bg = "light blue")
+
+description = tk.Label(root, bg = "light blue", text = "Your search matched these documents:")
+description.pack()
+
+text = tk.Text(root)
+text.config(bg = "light blue")
 for i in result:
-    print(files[i])
+    text.insert(tk.END, files[i] + '\n')
+text.pack()
 
-master = tk.Tk()
-
-listbox = tk.Listbox(master)
-listbox.pack()
-
-for i in result:
-    listbox.insert(tk.END, files[i])
-
-master.mainloop()
+button = tk.Button(root, text = 'Exit', fg = 'White', bg = '#49A', height = 1, width = 10, command = root.destroy).pack()
+    
+root.mainloop()
 
 
