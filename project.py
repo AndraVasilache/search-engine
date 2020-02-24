@@ -4,19 +4,15 @@ import re
 import sys
 import tkinter as tk
 
-#root = tk.Tk()
-#root.title('Search Engine')
-#button = tk.Button(root, text='Stop', width=25, command=root.destroy)
-#button.pack() 
-#tk.mainloop()
-#T = tk.Text(root, height=20, width=100)
-#T.pack()
-#T.insert(tk.END, "Hello there. What are you looking for?\n")
-#tk.Label(root, text="Insert regulax expresion here:").pack()
-#b = tk.Button(root,text='okay')
+root =tk.Tk()
+mystring =tk.StringVar(root)
+e1 = tk.Entry(root,textvariable = mystring,width=100,fg="blue",bd=3,selectbackground='violet').pack()
+button1 = tk.Button(root, 
+                text='Submit', 
+                fg='White', 
+                bg= 'dark green',height = 1, width = 10, command = root.destroy).pack()
 
-#tk.mainloop()
-
+root.mainloop()
 
 path = "./"
 directory = os.listdir(path)
@@ -47,7 +43,8 @@ for filename in glob.glob('*.txt'):
     #add list_of_words to the total list of files
     list_of_files.append(list_of_words)
 
-query = sys.stdin.readline() #string input
+#############33query = sys.stdin.readline() #string input
+query = mystring.get()
 keywords = re.sub(r'[^\w\s]', '', query)
 keywords = keywords.split()
 
