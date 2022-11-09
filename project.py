@@ -67,11 +67,11 @@ for filename in glob.glob('*.txt'):
 try:
     query = mystring.get()
 except:
-    print("An error has occured. Something must not be right with the imput")
+    print("An error has occured. Something must not be right with the input")
     sys.exit()
 
 if (not query):
-    print("Your imput is empty!")
+    print("Your input is empty!")
     sys.exit()
 keywords = re.sub(r'[^\w\s]', '', query)
 keywords = keywords.split()
