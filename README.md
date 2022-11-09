@@ -46,6 +46,12 @@ sudo ./installation.sh
 ```
 
 ## Authors
+[Andra Vasilache](https://github.com/AndraVasilache) - [vasilacheandragabriela@gmail.com]()
 
-* **Andra Vasilache**
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
 
